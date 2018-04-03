@@ -1,0 +1,25 @@
+{
+  "name": "api",
+  "version": "0.1.0",
+  "description": "API pública para consulta dos dados coletados pelo projeto Laddres",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Laddres/api.git"
+  },
+  "keywords": [
+    "laddres",
+    "dados",
+    "abertos",
+    "eleições"
+  ],
+  "author": "Ludiico",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Laddres/api/issues"
+  },
+  "homepage": "https://github.com/Laddres/api#readme"
+}
