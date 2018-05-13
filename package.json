@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Laddres/api#readme",
   "dependencies": {
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "mysql": "^2.15.0"
   }
