@@ -1,6 +1,8 @@
-const mysql = require('mysql');
+'use strict'
 
-const express = require('express');
+import mysql from 'mysql';
+
+import express from 'express';
 const app = express();
 
 app.get('/', (req, res) => {
@@ -102,4 +104,4 @@ app.get('/', (req, res) => {
   })
 });
 
-module.exports = app;
+export default app;
