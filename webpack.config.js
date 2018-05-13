@@ -22,6 +22,13 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         include: /src/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: /src/,
         loader: 'babel-loader',
       },
     ],
