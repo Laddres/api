@@ -9,7 +9,7 @@ module.exports = {
   target: 'node',
 
   entry: [
-    path.join(__dirname, '', 'index'),
+    path.join(__dirname, 'src', 'index'),
   ],
   output: {
     path: path.join(__dirname, 'build'),
