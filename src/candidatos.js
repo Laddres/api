@@ -1,3 +1,5 @@
+/* eslint-disable prefer-promise-reject-errors */
+
 import mysql from 'mysql';
 
 const sqlResumido = termoBusca => `
