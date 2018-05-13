@@ -9,7 +9,11 @@ app.get('/', (req, res) => {
   const nomeCandidato = req.query.candidato;
 
   if (!nomeCandidato) {
-    res.status(400).send('É preciso enviar o nome de um candidato para que a busca funcione corretamente');
+    res.status(400).send({
+      error: {
+        message: 'É preciso enviar o nome de um candidato',
+      },
+    });
     return;
   }
 
@@ -50,13 +54,21 @@ app.get('/', (req, res) => {
     LIMIT 10;`;
   conn.query(sqlCandidato, (error, results, fields) => {
     if (error) {
-      res.status(500).send(error);
+      res.status(500).send({
+        error: {
+          message: `Erro inesperado: ${error}`,
+        },
+      });
       return;
     }
 
     const candidato = results[0];
     if (!candidato) {
-      res.status(404).send('Candidato não encontrado');
+      res.status(404).send({
+        error: {
+          message: 'Candidato não encontrado',
+        },
+      });
       return;
     }
 
@@ -94,7 +106,11 @@ app.get('/', (req, res) => {
       LIMIT 10;`;
     conn.query(sqlCandidatura, (error, results, fields) => {
       if (error) {
-        res.status(500).send(error);
+        res.status(500).send({
+          error: {
+            message: `Erro inesperado: ${error}`,
+          },
+        });
         return;
       }
 
