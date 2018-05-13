@@ -1,4 +1,5 @@
-#!/usr/bin/env nodejs
+'use strict'
+
 import dotenv from 'dotenv';
 dotenv.config();
 
