@@ -4,7 +4,7 @@
   "description": "API pública para consulta dos dados coletados pelo projeto Laddres",
   "main": "index.js",
   "scripts": {
-    "server": "babel-node index.js",
+    "start": "nodemon --exec babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.17.4"
   }
 }
