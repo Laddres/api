@@ -1,8 +1,6 @@
-'use strict'
-
 import mysql from 'mysql';
-
 import express from 'express';
+
 const app = express();
 
 app.get('/', (req, res) => {
@@ -52,7 +50,7 @@ app.get('/', (req, res) => {
     ORDER BY
       candidato.id ASC
     LIMIT 10;`;
-  conn.query(sqlCandidato, (error, results, fields) => {
+  conn.query(sqlCandidato, (error, results) => {
     if (error) {
       res.status(500).send({
         error: {
@@ -104,20 +102,20 @@ app.get('/', (req, res) => {
       ORDER BY
         eleicao.ano ASC
       LIMIT 10;`;
-    conn.query(sqlCandidatura, (error, results, fields) => {
-      if (error) {
+    conn.query(sqlCandidatura, (error2, results2) => {
+      if (error2) {
         res.status(500).send({
-          error: {
-            message: `Erro inesperado: ${error}`,
+          error2: {
+            message: `Erro inesperado: ${error2}`,
           },
         });
         return;
       }
 
-      candidato.candidaturas = results;
+      candidato.candidaturas = results2;
       res.status(200).send(candidato);
-    })
-  })
+    });
+  });
 });
 
 export default app;
