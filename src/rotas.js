@@ -1,6 +1,7 @@
 import { Router as routerFactory } from 'express';
 
 import candidatos from './candidatos';
+import candidaturas from './candidaturas';
 
 const router = routerFactory();
 
@@ -17,6 +18,19 @@ router.get('/candidatos', (req, res) => {
   };
 
   candidatos(parametros)
+    .then(dados => res.status(200).send(dados))
+    .catch((erro) => {
+      const { statusCode } = erro;
+      res.status(statusCode).send(erro);
+    });
+});
+
+router.get('/candidatos/:id/candidaturas', (req, res) => {
+  const parametros = {
+    idCandidato: req.params.id,
+  };
+
+  candidaturas(parametros)
     .then(dados => res.status(200).send(dados))
     .catch((erro) => {
       const { statusCode } = erro;
