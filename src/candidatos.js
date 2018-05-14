@@ -2,6 +2,8 @@
 
 import mysql from 'mysql';
 
+import candidaturas from './candidaturas';
+
 const sqlResumido = termoBusca => `
   SELECT
     candidato.id,
@@ -51,7 +53,7 @@ const candidatos = ({ nomeCandidato, tipo }) => (
       reject({ statusCode: 400, erro: 'É preciso enviar o nome de um candidato' });
     }
 
-    const sql = tipo ? sqlResumido(nomeCandidato) : sqlCompleto(nomeCandidato);
+    const sql = tipo === 'resumido' ? sqlResumido(nomeCandidato) : sqlCompleto(nomeCandidato);
 
     const conn = mysql.createConnection({
       host: process.env.DB_HOST,
@@ -64,7 +66,25 @@ const candidatos = ({ nomeCandidato, tipo }) => (
         reject({ statusCode: 500, erro: `Erro inesperado: ${erro}` });
       }
 
-      resolve(resultados);
+      if (tipo !== 'expandido') {
+        resolve(resultados);
+      }
+
+      const promises = resultados.map(candidato => candidaturas({ idCandidato: candidato.id }));
+      Promise.all(promises)
+        .then((resultadoCandidaturas) => {
+          const resultadoExpandido = [];
+          resultados.forEach((candidato, index) => {
+            resultadoExpandido.push({
+              ...candidato,
+              candidaturas: resultadoCandidaturas[index],
+            });
+          });
+          resolve(resultadoExpandido);
+        })
+        .catch(erroCandidaturas => (
+          reject({ statusCode: 500, erro: `Erro inesperado: ${erroCandidaturas}` })
+        ));
     });
   })
 );

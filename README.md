@@ -12,8 +12,8 @@
 - `/api/candidatos?nome={nome do candidato}&tipo=resumido`
   Retorna somente o nome e a origem do candidato
 
-- ~~`/api/candidatos?nome={nome do candidato}&tipo=expandido`~~
-  ~~Retorna todas as informações sobre um candidato, incluindo todas as candidaturas~~
+- `/api/candidatos?nome={nome do candidato}&tipo=expandido`
+  Retorna todas as informações sobre um candidato, incluindo todas as candidaturas
 
 - `/api/candidatos/{id}/candidaturas`
   Retorna todas as candidatuas a partir do id de um candidato
