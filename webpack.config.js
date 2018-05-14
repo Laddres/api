@@ -2,11 +2,19 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const fs = require('fs');
+
+const nodeModules = {};
+fs.readdirSync(path.resolve(__dirname, 'node_modules'))
+  .filter(x => ['.bin'].indexOf(x) === -1)
+  .forEach(mod => { nodeModules[mod] = `commonjs ${mod}`; });
 
 module.exports = {
   devtool: 'source-map',
   mode: 'development',
+
   target: 'node',
+  externals: nodeModules,
 
   entry: [
     path.join(__dirname, 'src', 'index'),
