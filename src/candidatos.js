@@ -51,7 +51,12 @@ const sqlCompleto = (termoBusca, pagina, itens) => `
     candidato.id ASC
   LIMIT ${(pagina - 1) * itens}, ${itens};`
 
-const candidatos = ({ nomeCandidato, tipo, pagina = 1, itens = 100 }) => (
+const candidatos = ({
+  nomeCandidato,
+  tipo,
+  pagina = 1,
+  itens = 100,
+}) => (
   new Promise((resolve, reject) => {
     if (!nomeCandidato) {
       reject({ statusCode: 400, erro: 'É preciso enviar o nome de um candidato' })
