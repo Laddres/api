@@ -1,14 +1,14 @@
 /* eslint-disable prefer-promise-reject-errors */
 
-import mysql from 'mysql';
+import mysql from 'mysql'
 
-import candidaturas from './candidaturas';
+import candidaturas from './candidaturas'
 
 const expressaoBusca = termoBusca => (
   termoBusca
     .split(' ')
     .reduce((acc, item) => `${acc}+${item}* `, '')
-);
+)
 
 const sqlResumido = (termoBusca, pagina, itens) => `
   SELECT
@@ -23,7 +23,7 @@ const sqlResumido = (termoBusca, pagina, itens) => `
   WHERE
     cidade.id = candidato.cidade_id AND
     MATCH(candidato.nome) AGAINST ('${expressaoBusca(termoBusca)}' IN BOOLEAN MODE)
-  LIMIT ${(pagina - 1) * itens}, ${itens};`;
+  LIMIT ${(pagina - 1) * itens}, ${itens};`
 const sqlCompleto = (termoBusca, pagina, itens) => `
   SELECT
     candidato.id,
@@ -49,50 +49,50 @@ const sqlCompleto = (termoBusca, pagina, itens) => `
     MATCH(candidato.nome) AGAINST ('${expressaoBusca(termoBusca)}' IN BOOLEAN MODE)
   ORDER BY
     candidato.id ASC
-  LIMIT ${(pagina - 1) * itens}, ${itens};`;
+  LIMIT ${(pagina - 1) * itens}, ${itens};`
 
 const candidatos = ({ nomeCandidato, tipo, pagina = 1, itens = 100 }) => (
   new Promise((resolve, reject) => {
     if (!nomeCandidato) {
-      reject({ statusCode: 400, erro: 'É preciso enviar o nome de um candidato' });
+      reject({ statusCode: 400, erro: 'É preciso enviar o nome de um candidato' })
     }
 
     const sql = tipo === 'resumido'
       ? sqlResumido(nomeCandidato, pagina, itens)
-      : sqlCompleto(nomeCandidato, pagina, itens);
+      : sqlCompleto(nomeCandidato, pagina, itens)
 
     const conn = mysql.createConnection({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-    });
+    })
     conn.query(sql, (erro, resultados) => {
       if (erro) {
-        reject({ statusCode: 500, erro: `Erro inesperado: ${erro}` });
+        reject({ statusCode: 500, erro: `Erro inesperado: ${erro}` })
       }
 
       if (tipo !== 'expandido') {
-        resolve(resultados);
+        resolve(resultados)
       }
 
-      const promises = resultados.map(candidato => candidaturas({ idCandidato: candidato.id }));
+      const promises = resultados.map(candidato => candidaturas({ idCandidato: candidato.id }))
       Promise.all(promises)
         .then((resultadoCandidaturas) => {
-          const resultadoExpandido = [];
+          const resultadoExpandido = []
           resultados.forEach((candidato, index) => {
             resultadoExpandido.push({
               ...candidato,
               candidaturas: resultadoCandidaturas[index],
-            });
-          });
-          resolve(resultadoExpandido);
+            })
+          })
+          resolve(resultadoExpandido)
         })
         .catch(erroCandidaturas => (
           reject({ statusCode: 500, erro: `Erro inesperado: ${erroCandidaturas}` })
-        ));
-    });
+        ))
+    })
   })
-);
+)
 
-export default candidatos;
+export default candidatos

@@ -1,6 +1,6 @@
 /* eslint-disable prefer-promise-reject-errors */
 
-import mysql from 'mysql';
+import mysql from 'mysql'
 
 const sqlCompleto = (idCandidato, pagina, itens) => `
   SELECT
@@ -33,26 +33,26 @@ const sqlCompleto = (idCandidato, pagina, itens) => `
     candidato.id = '${idCandidato}'
   ORDER BY
     eleicao.ano ASC
-  LIMIT ${(pagina - 1) * itens}, ${itens};`;
+  LIMIT ${(pagina - 1) * itens}, ${itens}`
 
 const candidaturas = ({ idCandidato, pagina = 1, itens = 100 }) => (
   new Promise((resolve, reject) => {
-    const sql = sqlCompleto(idCandidato, pagina, itens);
+    const sql = sqlCompleto(idCandidato, pagina, itens)
 
     const conn = mysql.createConnection({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-    });
+    })
     conn.query(sql, (erro, resultados) => {
       if (erro) {
-        reject({ statusCode: 500, erro: `Erro inesperado: ${erro}` });
+        reject({ statusCode: 500, erro: `Erro inesperado: ${erro}` })
       }
 
-      resolve(resultados);
-    });
+      resolve(resultados)
+    })
   })
-);
+)
 
-export default candidaturas;
+export default candidaturas
