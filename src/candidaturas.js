@@ -2,7 +2,7 @@
 
 import mysql from 'mysql';
 
-const sqlCompleto = idCandidato => `
+const sqlCompleto = (idCandidato, pagina, itens) => `
   SELECT
     candidatura.id,
     eleicao.ano as ano_eleicao,
@@ -33,11 +33,11 @@ const sqlCompleto = idCandidato => `
     candidato.id = '${idCandidato}'
   ORDER BY
     eleicao.ano ASC
-  LIMIT 10;`;
+  LIMIT ${(pagina - 1) * itens}, ${itens};`;
 
-const candidaturas = ({ idCandidato }) => (
+const candidaturas = ({ idCandidato, pagina = 1, itens = 100 }) => (
   new Promise((resolve, reject) => {
-    const sql = sqlCompleto(idCandidato);
+    const sql = sqlCompleto(idCandidato, pagina, itens);
 
     const conn = mysql.createConnection({
       host: process.env.DB_HOST,

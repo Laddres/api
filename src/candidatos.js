@@ -4,7 +4,7 @@ import mysql from 'mysql';
 
 import candidaturas from './candidaturas';
 
-const sqlResumido = termoBusca => `
+const sqlResumido = (termoBusca, pagina, itens) => `
   SELECT
     candidato.id,
     candidato.nome as nome,
@@ -19,8 +19,8 @@ const sqlResumido = termoBusca => `
     candidato.nome LIKE '${termoBusca}%'
   ORDER BY
     candidato.id ASC
-  LIMIT 10;`;
-const sqlCompleto = termoBusca => `
+  LIMIT ${(pagina - 1) * itens}, ${itens};`;
+const sqlCompleto = (termoBusca, pagina, itens) => `
   SELECT
     candidato.id,
     candidato.nome as nome,
@@ -45,15 +45,17 @@ const sqlCompleto = termoBusca => `
     candidato.nome LIKE '${termoBusca}%'
   ORDER BY
     candidato.id ASC
-  LIMIT 10;`;
+  LIMIT ${(pagina - 1) * itens}, ${itens};`;
 
-const candidatos = ({ nomeCandidato, tipo }) => (
+const candidatos = ({ nomeCandidato, tipo, pagina = 1, itens = 100 }) => (
   new Promise((resolve, reject) => {
     if (!nomeCandidato) {
       reject({ statusCode: 400, erro: 'É preciso enviar o nome de um candidato' });
     }
 
-    const sql = tipo === 'resumido' ? sqlResumido(nomeCandidato) : sqlCompleto(nomeCandidato);
+    const sql = tipo === 'resumido'
+      ? sqlResumido(nomeCandidato, pagina, itens)
+      : sqlCompleto(nomeCandidato, pagina, itens);
 
     const conn = mysql.createConnection({
       host: process.env.DB_HOST,

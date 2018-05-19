@@ -15,6 +15,8 @@ router.get('/candidatos', (req, res) => {
   const parametros = {
     nomeCandidato: req.query.nome,
     tipo: req.query.tipo,
+    pagina: req.query.pagina,
+    itens: req.query.itens,
   };
 
   candidatos(parametros)
