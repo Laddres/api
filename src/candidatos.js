@@ -4,6 +4,12 @@ import mysql from 'mysql';
 
 import candidaturas from './candidaturas';
 
+const expressaoBusca = termoBusca => (
+  termoBusca
+    .split(' ')
+    .reduce((acc, item) => `${acc}+${item}* `, '')
+);
+
 const sqlResumido = (termoBusca, pagina, itens) => `
   SELECT
     candidato.id,
@@ -16,9 +22,7 @@ const sqlResumido = (termoBusca, pagina, itens) => `
       INNER JOIN estado on cidade.estado_id = estado.id
   WHERE
     cidade.id = candidato.cidade_id AND
-    candidato.nome LIKE '${termoBusca}%'
-  ORDER BY
-    candidato.id ASC
+    MATCH(candidato.nome) AGAINST ('${expressaoBusca(termoBusca)}' IN BOOLEAN MODE)
   LIMIT ${(pagina - 1) * itens}, ${itens};`;
 const sqlCompleto = (termoBusca, pagina, itens) => `
   SELECT
@@ -42,7 +46,7 @@ const sqlCompleto = (termoBusca, pagina, itens) => `
       INNER JOIN estado on cidade.estado_id = estado.id
   WHERE
     cidade.id = candidato.cidade_id AND
-    candidato.nome LIKE '${termoBusca}%'
+    MATCH(candidato.nome) AGAINST ('${expressaoBusca(termoBusca)}' IN BOOLEAN MODE)
   ORDER BY
     candidato.id ASC
   LIMIT ${(pagina - 1) * itens}, ${itens};`;
