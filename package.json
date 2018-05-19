@@ -1,10 +1,14 @@
 {
   "name": "api",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "API pública para consulta dos dados coletados pelo projeto Laddres",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack -p --optimize-minimize",
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "webpack:watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -23,7 +27,25 @@
   },
   "homepage": "https://github.com/Laddres/api#readme",
   "dependencies": {
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
+    "nodemon": "^1.17.4",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3"
   }
 }

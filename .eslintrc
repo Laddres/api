@@ -1,0 +1,10 @@
+{
+  parser: "babel-eslint",
+  env: {
+    node: true
+  },
+  extends: ["airbnb"],
+  rules: {
+    semi: [2, "never"],
+  },
+}
