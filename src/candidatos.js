@@ -7,7 +7,7 @@ import candidaturas from './candidaturas'
 const expressaoBusca = termoBusca => (
   termoBusca
     .split(' ')
-    .reduce((acc, item) => `${acc}+${item}* `, '')
+    .reduce((acc, item) => `${acc}+${item}${item.length > 2 ? '*' : ''} `, '')
 )
 
 const sqlResumido = (termoBusca, pagina, itens) => `
