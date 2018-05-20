@@ -111,7 +111,7 @@ const candidatosPorId = ({ idCandidato }) => (
       reject({ statusCode: 400, erro: 'É preciso enviar o nome de um candidato' })
     }
 
-    const sql = sqlExpandido(parseInt(idCandidato))
+    const sql = sqlExpandido(parseInt(idCandidato, 10))
 
     const conn = mysql.createConnection({
       host: process.env.DB_HOST,
