@@ -6,10 +6,10 @@
 
 ## Docs (temporário)
 
-- `/api/candidatos?nome={nome do candidato}`
+- `/api/candidatos?nome={nome do candidato}&pagina={número da página}&itens{número de itens por página}`
   Retorna todas informações sobre um candidato
 
-- `/api/candidatos?nome={nome do candidato}&tipo=resumido`
+- `/api/candidatos?nome={nome do candidato}&tipo=resumido&pagina={número da página}&itens{número de itens por página}`
   Retorna somente o nome e a origem do candidato
 
 - `/api/candidatos/{id}`
