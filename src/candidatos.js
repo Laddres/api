@@ -2,7 +2,7 @@
 
 import mysql from 'mysql'
 
-import candidaturas from './candidaturas'
+// import candidaturas from './candidaturas'
 
 const expressaoBusca = termoBusca => (
   termoBusca
@@ -77,25 +77,7 @@ const candidatos = ({
         reject({ statusCode: 500, erro: `Erro inesperado: ${erro}` })
       }
 
-      if (tipo !== 'expandido') {
-        resolve(resultados)
-      }
-
-      const promises = resultados.map(candidato => candidaturas({ idCandidato: candidato.id }))
-      Promise.all(promises)
-        .then((resultadoCandidaturas) => {
-          const resultadoExpandido = []
-          resultados.forEach((candidato, index) => {
-            resultadoExpandido.push({
-              ...candidato,
-              candidaturas: resultadoCandidaturas[index],
-            })
-          })
-          resolve(resultadoExpandido)
-        })
-        .catch(erroCandidaturas => (
-          reject({ statusCode: 500, erro: `Erro inesperado: ${erroCandidaturas}` })
-        ))
+      resolve(resultados)
     })
   })
 )
