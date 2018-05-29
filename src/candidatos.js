@@ -1,6 +1,5 @@
 /* eslint-disable prefer-promise-reject-errors */
-
-import mysql from 'mysql'
+import db from './utils/database'
 
 import candidaturas from './candidaturas'
 
@@ -89,19 +88,13 @@ const candidatosPorNome = ({
       ? sqlResumido(nomeCandidato, pagina, itens)
       : sqlCompleto(nomeCandidato, pagina, itens)
 
-    const conn = mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
-    })
-    conn.query(sql, (erro, resultados) => {
-      if (erro) {
-        reject({ statusCode: 500, erro: `Erro inesperado: ${erro}` })
-      }
-
-      resolve(resultados)
-    })
+    db.query(sql)
+      .then((resultados) => {
+        resolve(resultados)
+      })
+      .catch((error) => {
+        reject({ statusCode: 500, erro: `Erro inesperado: ${error}` })
+      })
   })
 )
 
@@ -113,30 +106,24 @@ const candidatosPorId = ({ idCandidato }) => (
 
     const sql = sqlExpandido(parseInt(idCandidato, 10))
 
-    const conn = mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
-    })
-    conn.query(sql, (erro, resultados) => {
-      if (erro) {
-        reject({ statusCode: 500, erro: `Erro inesperado: ${erro}` })
-      }
+    db.query(sql)
+      .then((resultados) => {
+        if (resultados.length === 0) {
+          resolve([])
+        }
 
-      if (resultados.length === 0) {
-        resolve([])
-      }
-
-      const candidato = resultados[0]
-      candidaturas({ idCandidato: candidato.id })
-        .then(resultadoCandidaturas => (
-          resolve({ ...candidato, candidaturas: resultadoCandidaturas })
-        ))
-        .catch(erroCandidaturas => (
-          reject({ statusCode: 500, erro: `Erro inesperado: ${erroCandidaturas}` })
-        ))
-    })
+        const candidato = resultados[0]
+        candidaturas({ idCandidato: candidato.id })
+          .then(resultadoCandidaturas => (
+            resolve({ ...candidato, candidaturas: resultadoCandidaturas })
+          ))
+          .catch(erroCandidaturas => (
+            reject({ statusCode: 500, erro: `Erro inesperado: ${erroCandidaturas}` })
+          ))
+      })
+      .catch((error) => {
+        reject({ statusCode: 500, erro: `Erro inesperado: ${error}` })
+      })
   })
 )
 

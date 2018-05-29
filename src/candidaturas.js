@@ -1,6 +1,5 @@
 /* eslint-disable prefer-promise-reject-errors */
-
-import mysql from 'mysql'
+import db from './utils/database'
 
 const sqlCompleto = (idCandidato, pagina, itens) => `
   SELECT
@@ -39,19 +38,13 @@ const candidaturas = ({ idCandidato, pagina = 1, itens = 100 }) => (
   new Promise((resolve, reject) => {
     const sql = sqlCompleto(idCandidato, pagina, itens)
 
-    const conn = mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
-    })
-    conn.query(sql, (erro, resultados) => {
-      if (erro) {
-        reject({ statusCode: 500, erro: `Erro inesperado: ${erro}` })
-      }
-
-      resolve(resultados)
-    })
+    db.query(sql)
+      .then((resultados) => {
+        resolve(resultados)
+      })
+      .catch((error) => {
+        reject({ statusCode: 500, erro: `Erro inesperado: ${error}` })
+      })
   })
 )
 
