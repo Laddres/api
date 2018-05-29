@@ -19,7 +19,20 @@ router.get('/candidatos', (req, res) => {
     itens: req.query.itens,
   }
 
-  candidatos(parametros)
+  candidatos.porNome(parametros)
+    .then(dados => res.status(200).send(dados))
+    .catch((erro) => {
+      const { statusCode } = erro
+      res.status(statusCode).send(erro)
+    })
+})
+
+router.get('/candidatos/:id', (req, res) => {
+  const parametros = {
+    idCandidato: req.params.id,
+  }
+
+  candidatos.porId(parametros)
     .then(dados => res.status(200).send(dados))
     .catch((erro) => {
       const { statusCode } = erro
