@@ -1,4 +1,6 @@
 /* eslint-disable prefer-promise-reject-errors */
+import capitalize from 'capitalize-pt-br'
+
 import db from './utils/database'
 
 const sqlCompleto = (idCandidato, pagina, itens) => `
@@ -34,13 +36,41 @@ const sqlCompleto = (idCandidato, pagina, itens) => `
     eleicao.ano ASC
   LIMIT ${(pagina - 1) * itens}, ${itens}`
 
+const formatarCandidaturas = candidaturas => (
+  candidaturas.map(candidatura => (
+    {
+      id: candidatura.id,
+      anoEleicao: candidatura.ano_eleicao,
+      descricaoEleicao: capitalize(candidatura.descricao_eleicao),
+      cidade: candidatura.cidade ? capitalize(candidatura.cidade) : null,
+      estado: candidatura.estado ? capitalize(candidatura.estado) : null,
+      numeroCandidato: candidatura.numero_candidato ? candidatura.numero_candidato : null,
+      nomeUrna: candidatura.nome_urna ? capitalize(candidatura.nome_urna) : null,
+      siglaPartido: candidatura.sigla_partido ? candidatura.sigla_partido.toUpperCase() : null,
+      nomePartido: candidatura.nome_partido ? capitalize(candidatura.nome_partido) : null,
+      nomeLegenda: candidatura.legenda_nome ? capitalize(candidatura.legenda_nome) : null,
+      composicaoLegenda: candidatura.legenda_composicao
+        ? candidatura.legenda_composicao.toUpperCase()
+        : null,
+      cargo: candidatura.cargo ? capitalize(candidatura.cargo) : null,
+      despesaMaxima: candidatura.despesa_maxima ? candidatura.despesa_maxima : null,
+      situacaoCandidatura: candidatura.situacao_candidatura
+        ? capitalize(candidatura.situacao_candidatura)
+        : null,
+      resultadoCandidatura: candidatura.resultado_candidatura
+        ? capitalize(candidatura.resultado_candidatura)
+        : null,
+    }
+  ))
+)
+
 const candidaturas = ({ idCandidato, pagina = 1, itens = 100 }) => (
   new Promise((resolve, reject) => {
     const sql = sqlCompleto(idCandidato, pagina, itens)
 
     db.query(sql)
       .then((resultados) => {
-        resolve(resultados)
+        resolve(formatarCandidaturas(resultados))
       })
       .catch((error) => {
         reject({ statusCode: 500, erro: `Erro inesperado: ${error}` })
