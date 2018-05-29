@@ -1,10 +1,10 @@
 {
   "name": "api",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "API pública para consulta dos dados coletados pelo projeto Laddres",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -p --optimize-minimize",
+    "build": "webpack -p --progress --optimize-minimize",
     "start": "nodemon --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
