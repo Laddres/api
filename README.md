@@ -20,88 +20,94 @@
 
 ### Exemplo de retorno completo
 
-```
+```json
 {
-  "id": 412004,
-  "nome": "João Alves Filho",
-  "dataNascimento": "03/07/1941",
-  "cpf": "002.588.495-68",
-  "tituloEleitoral": "0006 3133 2178",
-  "email": "jaf.sergipe@gmail.com",
-  "cidadeNatal": "Aracaju",
-  "estadoOrigem": "Sergipe",
-  "grauInstrucao": "Superior Completo",
-  "ocupacao": "Engenheiro",
+  "id": 4490,
+  "nome": "Geronimo Ciqueira da Silva",
+  "dataNascimento": "12/08/1956",
+  "cpf": "139.653.104-10",
+  "tituloEleitoral": "0050 2542 1775",
+  "email": null,
+  "cidadeNatal": "Mar Vermelho",
+  "estadoOrigem": "Alagoas",
+  "grauInstrucao": "Ensino Médio Completo",
+  "ocupacao": "Vereador",
   "nacionalidade": "Brasileira Nata",
   "candidaturas": [
     {
-      "id": 418826,
-      "anoEleicao": 2006,
-      "descricaoEleicao": "Eleicoes 2006",
-      "cidade": null,
-      "estado": "Sergipe",
-      "numeroCandidato": 25,
-      "nomeUrna": "João Alves",
-      "siglaPartido": "DEM",
-      "nomePartido": "Democratas",
-      "nomeLegenda": "Sergipe no Rumo Certo",
+      "id": 4495,
+      "anoEleicao": 2004,
+      "descricaoEleicao": "Eleicoes 2004",
+      "cidade": "Maceió",
+      "estado": "Alagoas",
+      "numeroCandidato": 40654,
+      "nomeUrna": "Gerônimo da Adefal",
+      "siglaPartido": "PSB",
+      "nomePartido": "Partido Socialista Brasileiro",
+      "nomeLegenda": null,
       "composicaoLegenda": null,
-      "cargo": "Governador",
-      "despesaMaxima": 4000000,
-      "situacaoCandidatura": "Deferido",
-      "resultadoCandidatura": "Não Eleito"
-    },
-    {
-      "id": 825797,
-      "anoEleicao": 2010,
-      "descricaoEleicao": "Eleições 2010",
-      "cidade": null,
-      "estado": "Sergipe",
-      "numeroCandidato": 25,
-      "nomeUrna": "João Alves",
-      "siglaPartido": "DEM",
-      "nomePartido": "Democratas",
-      "nomeLegenda": "Em Nome do Povo",
-      "composicaoLegenda": null,
-      "cargo": "Governador",
-      "despesaMaxima": 10000000,
-      "situacaoCandidatura": "Deferido",
-      "resultadoCandidatura": "Não Eleito"
-    },
-    {
-      "id": 1219607,
-      "anoEleicao": 2012,
-      "descricaoEleicao": "Eleição Municipal 2012",
-      "cidade": "Aracaju",
-      "estado": "Sergipe",
-      "numeroCandidato": 25,
-      "nomeUrna": "João Alves",
-      "siglaPartido": "DEM",
-      "nomePartido": "Democratas",
-      "nomeLegenda": "Aracaju Não Pode Esperar",
-      "composicaoLegenda": "PP / PTB / PSL / PTN / PSC / PR / DEM / PRTB / PMN / PTC / PRP / PSDB / PPL",
-      "cargo": "Prefeito",
-      "despesaMaxima": 12000000,
+      "cargo": "Vereador",
+      "despesaMaxima": null,
       "situacaoCandidatura": "Deferido",
       "resultadoCandidatura": "Eleito"
     },
     {
-      "id": 1742391,
-      "anoEleicao": 2016,
-      "descricaoEleicao": "Eleições Municipais 2016",
-      "cidade": "Aracaju",
-      "estado": "Sergipe",
-      "numeroCandidato": 25,
-      "nomeUrna": "João Alves",
+      "id": 402324,
+      "anoEleicao": 2006,
+      "descricaoEleicao": "Eleicoes 2006",
+      "cidade": null,
+      "estado": "Alagoas",
+      "numeroCandidato": 2566,
+      "nomeUrna": "Gerônimo da Adefal",
       "siglaPartido": "DEM",
       "nomePartido": "Democratas",
-      "nomeLegenda": "Aracaju em Boas Mãos",
-      "composicaoLegenda": "DEM / PSDB / PV / PPS / PEN / PHS",
-      "cargo": "Prefeito",
-      "despesaMaxima": null,
+      "nomeLegenda": "Alagoas Mudar Para Crescer",
+      "composicaoLegenda": null,
+      "cargo": "Deputado Federal",
+      "despesaMaxima": 800000,
       "situacaoCandidatura": "Deferido",
-      "resultadoCandidatura": "Não Eleito"
+      "resultadoCandidatura": "Eleito"
     }
-  ]
+  ],
+  "mandatos": {
+    "camara": {
+      "idDeputado": 141444,
+      "foto": "https://www.camara.leg.br/internet/deputado/bandep/141444.jpg",
+      "gabinete": {
+        "predio": null,
+        "sala": null,
+        "telefone": null,
+        "email": "dep.gerônimodaadefal@camara.leg.br"
+      },
+      "website": null,
+      "mandatos": [
+        {
+          "idLegislatura": 53,
+          "dataInicio": "01/02/2007",
+          "dataFim": "31/01/2011",
+          "participacaoOrgaos": [
+            {
+              "orgao": "Comissão de Direitos Humanos e Minorias",
+              "papel": "1º Vice-Presidente",
+              "dataInicio": "14/02/2007",
+              "dataFim": "03/11/2007"
+            },
+            {
+              "orgao": "Comissão de Direitos Humanos e Minorias",
+              "papel": "Titular",
+              "dataInicio": "14/02/2007",
+              "dataFim": "03/11/2007"
+            },
+            {
+              "orgao": "Comissão de Seguridade Social e Família",
+              "papel": "Suplente",
+              "dataInicio": "14/02/2007",
+              "dataFim": "03/11/2007"
+            }
+          ]
+        }
+      ]
+    }
+  }
 }
 ```
