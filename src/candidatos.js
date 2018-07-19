@@ -3,6 +3,7 @@ import capitalize from 'capitalize-pt-br'
 
 import db from './utils/database'
 import candidaturas from './candidaturas'
+import camara from './camara'
 
 const expressaoBusca = termoBusca => (
   termoBusca
@@ -144,13 +145,22 @@ const candidatosPorId = ({ idCandidato }) => (
         }
 
         const candidato = formatarCandidatoCompleto(resultados[0])
-        candidaturas({ idCandidato: candidato.id })
-          .then(resultadoCandidaturas => (
-            resolve({ ...candidato, candidaturas: resultadoCandidaturas })
+        Promise.all([
+          candidaturas({ idCandidato: candidato.id }),
+          camara({ idCandidato: candidato.id }),
+        ])
+          .then(outrasInformacoes => (
+            resolve({
+              ...candidato,
+              candidaturas: outrasInformacoes[0],
+              mandatos: {
+                camara: outrasInformacoes[1],
+              },
+            })
           ))
-          .catch(erroCandidaturas => (
-            reject({ statusCode: 500, erro: `Erro inesperado: ${erroCandidaturas}` })
-          ))
+          .catch((erroOutrasInformacoes) => {
+            reject({ statusCode: 500, erro: `Erro inesperado: ${erroOutrasInformacoes}` })
+          })
       })
       .catch((error) => {
         reject({ statusCode: 500, erro: `Erro inesperado: ${error}` })
