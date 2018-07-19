@@ -1,5 +1,6 @@
 /* eslint-disable prefer-promise-reject-errors */
 import db from '../utils/database'
+import { data as formatarData } from '../utils/formatar'
 
 const sqlParticipacoes = (idDeputado, idLegislatura) => `
   SELECT
@@ -19,15 +20,12 @@ const sqlParticipacoes = (idDeputado, idLegislatura) => `
     participacao.data_inicio ASC
 `
 
-const formatarData = data => (
-  data.toISOString().split('T')[0].split('-').reverse().toString().replace(/,/g, '/')
-)
 const formatarParticipacoes = participacoes => (
   participacoes.map(participacao => ({
     orgao: participacao.orgao,
     papel: participacao.papel,
     dataInicio: formatarData(participacao.data_inicio),
-    dataFim: participacao.data_fim ? formatarData(participacao.data_fim) : null,
+    dataFim: formatarData(participacao.data_fim),
   }))
 )
 

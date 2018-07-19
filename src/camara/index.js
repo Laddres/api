@@ -1,6 +1,6 @@
 /* eslint-disable prefer-promise-reject-errors */
 import db from '../utils/database'
-
+import { email as formatarEmail } from '../utils/formatar'
 import mandatos from './mandatos'
 
 const sqlDeputado = idCandidato => `
@@ -24,7 +24,7 @@ const formatarDeputado = deputado => ({
     predio: deputado.gabinete_predio,
     sala: deputado.gabinete_sala ? parseInt(deputado.gabinete_sala, 10) : null,
     telefone: deputado.gabinete_telefone,
-    email: deputado.gabinete_email,
+    email: formatarEmail(deputado.gabinete_email),
   },
   website: deputado.website,
 })

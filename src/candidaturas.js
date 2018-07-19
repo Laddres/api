@@ -1,7 +1,6 @@
 /* eslint-disable prefer-promise-reject-errors */
-import capitalize from 'capitalize-pt-br'
-
 import db from './utils/database'
+import { nomeProprio } from './utils/formatar'
 
 const sqlCompleto = (idCandidato, pagina, itens) => `
   SELECT
@@ -41,25 +40,21 @@ const formatarCandidaturas = candidaturas => (
     {
       id: candidatura.id,
       anoEleicao: candidatura.ano_eleicao,
-      descricaoEleicao: capitalize(candidatura.descricao_eleicao),
-      cidade: candidatura.cidade ? capitalize(candidatura.cidade) : null,
-      estado: candidatura.estado ? capitalize(candidatura.estado) : null,
+      descricaoEleicao: nomeProprio(candidatura.descricao_eleicao),
+      cidade: nomeProprio(candidatura.cidade),
+      estado: nomeProprio(candidatura.estado),
       numeroCandidato: candidatura.numero_candidato ? candidatura.numero_candidato : null,
-      nomeUrna: candidatura.nome_urna ? capitalize(candidatura.nome_urna) : null,
+      nomeUrna: nomeProprio(candidatura.nome_urna),
       siglaPartido: candidatura.sigla_partido ? candidatura.sigla_partido.toUpperCase() : null,
-      nomePartido: candidatura.nome_partido ? capitalize(candidatura.nome_partido) : null,
-      nomeLegenda: candidatura.legenda_nome ? capitalize(candidatura.legenda_nome) : null,
+      nomePartido: nomeProprio(candidatura.nome_partido),
+      nomeLegenda: nomeProprio(candidatura.legenda_nome),
       composicaoLegenda: candidatura.legenda_composicao
         ? candidatura.legenda_composicao.toUpperCase()
         : null,
-      cargo: candidatura.cargo ? capitalize(candidatura.cargo) : null,
+      cargo: nomeProprio(candidatura.cargo),
       despesaMaxima: candidatura.despesa_maxima ? candidatura.despesa_maxima : null,
-      situacaoCandidatura: candidatura.situacao_candidatura
-        ? capitalize(candidatura.situacao_candidatura)
-        : null,
-      resultadoCandidatura: candidatura.resultado_candidatura
-        ? capitalize(candidatura.resultado_candidatura)
-        : null,
+      situacaoCandidatura: nomeProprio(candidatura.situacao_candidatura),
+      resultadoCandidatura: nomeProprio(candidatura.resultado_candidatura),
     }
   ))
 )

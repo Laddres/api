@@ -1,5 +1,6 @@
 /* eslint-disable prefer-promise-reject-errors */
 import db from '../utils/database'
+import { data as formatarData } from '../utils/formatar'
 
 import participacaoOrgaos from './participacao-orgaos'
 
@@ -15,9 +16,6 @@ const sqlMandatos = idDeputado => `
     camara_mandato.deputado_id = ${idDeputado}
 `
 
-const formatarData = data => (
-  data.toISOString().split('T')[0].split('-').reverse().toString().replace(/,/g, '/')
-)
 const formatarMandatos = mandatos => (
   mandatos.map(mandato => (
     {
@@ -35,7 +33,6 @@ const mandatos = ({ idDeputado }) => (
     db.query(sql)
       .then((resultados) => {
         const listaMandatos = formatarMandatos(resultados)
-        // resolve(listaMandatos)
         Promise.all(listaMandatos.map(mandato => (
           participacaoOrgaos({ idDeputado, idLegislatura: mandato.idLegislatura })
         )))

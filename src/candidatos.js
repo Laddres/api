@@ -1,7 +1,6 @@
 /* eslint-disable prefer-promise-reject-errors */
-import capitalize from 'capitalize-pt-br'
-
 import db from './utils/database'
+import * as formatar from './utils/formatar'
 import candidaturas from './candidaturas'
 import camara from './camara'
 
@@ -75,28 +74,23 @@ const sqlExpandido = idCandidato => `
     candidato.id = ${idCandidato} AND
     cidade.id = candidato.cidade_id;`
 
-const formatarData = data => (
-  data.toISOString().split('T')[0].split('-').reverse().toString().replace(/,/g, '/')
-)
-const formatarCPF = cpf => cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4')
-const formatarTitulo = titulo => titulo.replace(/(\d{4})(\d{4})(\d{4})/g, '$1 $2 $3')
 const formatarCandidatoCompleto = candidato => ({
   id: candidato.id,
-  nome: capitalize(candidato.nome),
-  dataNascimento: candidato.data_nascimento ? formatarData(candidato.data_nascimento) : null,
-  cpf: candidato.cpf ? formatarCPF(candidato.cpf) : null,
-  tituloEleitoral: candidato.titulo_eleitoral ? formatarTitulo(candidato.titulo_eleitoral) : null,
-  email: candidato.email ? candidato.email.toLowerCase() : null,
-  cidadeNatal: candidato.cidade_natal ? capitalize(candidato.cidade_natal) : null,
-  estadoOrigem: candidato.estado_origem ? capitalize(candidato.estado_origem) : null,
-  grauInstrucao: candidato.grau_instrucao ? capitalize(candidato.grau_instrucao) : null,
-  ocupacao: candidato.ocupacao ? capitalize(candidato.ocupacao) : null,
-  nacionalidade: candidato.nacionalidade ? capitalize(candidato.nacionalidade) : null,
+  nome: formatar.nomeProprio(candidato.nome),
+  dataNascimento: formatar.data(candidato.data_nascimento),
+  cpf: formatar.cpf(candidato.cpf),
+  tituloEleitoral: formatar.tituloEleitoral(candidato.titulo_eleitoral),
+  email: formatar.email(candidato.email),
+  cidadeNatal: formatar.nomeProprio(candidato.cidade_natal),
+  estadoOrigem: formatar.nomeProprio(candidato.estado_origem),
+  grauInstrucao: formatar.nomeProprio(candidato.grau_instrucao),
+  ocupacao: formatar.nomeProprio(candidato.ocupacao),
+  nacionalidade: formatar.nomeProprio(candidato.nacionalidade),
 })
 const formatarCandidatoResumido = candidato => ({
   id: candidato.id,
-  nome: capitalize(candidato.nome),
-  cidade: candidato.cidade ? capitalize(candidato.cidade) : null,
+  nome: formatar.nomeProprio(candidato.nome),
+  cidade: formatar.nomeProprio(candidato.cidade),
   estado: candidato.estado ? candidato.estado.toUpperCase() : null,
 })
 const formatarRetorno = (candidatos, tipoRetorno) => (
