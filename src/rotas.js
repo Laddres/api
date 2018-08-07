@@ -17,6 +17,17 @@ router.get('/candidatos', (req, res) => {
     tipo: req.query.tipo,
     pagina: req.query.pagina,
     itens: req.query.itens,
+    siglaEstado: req.query.estado,
+  }
+
+  if (!parametros.nomeCandidato) {
+    candidatos.porCargo({ siglaEstado: parametros.siglaEstado })
+      .then(dados => res.status(200).send(dados))
+      .catch((erro) => {
+        const { statusCode } = erro
+        res.status(statusCode).send(erro)
+      })
+    return
   }
 
   candidatos.porNome(parametros)
