@@ -159,7 +159,7 @@ const candidatosPorCargo = ({ siglaEstado = 'SE' }) => (
 
 const candidatosPorNome = ({
   nomeCandidato,
-  tipo,
+  tipo = 'resumido',
   pagina = 1,
   itens = 100,
 }) => (
