@@ -6,6 +6,12 @@
 
 ## Docs (temporário)
 
+- `/api/candidatos`
+  Retorna todos os candidatos divididos por cargo (ex.: presidente, governador etc)
+
+- `/api/candidatos?estado={sigla do estado}`
+  Retorna todos os candidatos divididos por cargo do estado indicado. Caso nenhum estado seja indicado, o padrão será 'SE'
+
 - `/api/candidatos?nome={nome do candidato}&pagina={número da página}&itens{número de itens por página}`
   Retorna todas informações sobre um candidato
 
