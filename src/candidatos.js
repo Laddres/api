@@ -13,19 +13,15 @@ const expressaoBusca = termoBusca => (
 
 const sqlCargo = (idCargo, idEstado) => `
   SELECT
-    candidatura.id,
-    candidatura.candidato_id,
-    candidatura.nome_urna,
-    candidatura.numero_candidato,
-    partido.sigla
+    id,
+    nomeUrna,
+    partido,
+    numero
   FROM
-    candidatura
-    INNER JOIN partido on candidatura.partido_id = partido.id
+    eleicoes2014_dados_candidato
   WHERE
-    candidatura.eleicao_id = 138 AND
-    candidatura.situacao_candidatura_id = 2 AND
-    candidatura.cargo_id = ${idCargo} AND
-    (candidatura.estado_id = ${idEstado} OR candidatura.estado_id IS NULL)`
+    idCargo = ${idCargo} AND
+    (idEstadoCandidatura = ${idEstado} OR idEstadoCandidatura IS NULL);`
 const sqlResumido = (termoBusca, pagina, itens) => `
   SELECT
     candidato.id,
@@ -91,11 +87,10 @@ const sqlExpandido = idCandidato => `
     cidade.id = candidato.cidade_id;`
 
 const formatarCandidatoPorCargo = candidato => ({
-  idCandidatura: candidato.id,
-  idCandidato: candidato.candidato_id,
-  nome: formatar.nomeProprio(candidato.nome_urna),
-  numero: candidato.numero_candidato,
-  partido: candidato.sigla.toUpperCase(),
+  id: candidato.id,
+  nome: formatar.nomeProprio(candidato.nomeUrna),
+  numero: candidato.numero,
+  partido: candidato.partido.toUpperCase(),
 })
 const formatarCandidatoCompleto = candidato => ({
   id: candidato.id,
