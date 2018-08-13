@@ -30,7 +30,7 @@ router.get('/candidatos', (req, res) => {
     return
   }
 
-  candidatos.porNome(parametros)
+  candidatos.busca({ nomeCandidato: parametros.nomeCandidato, siglaEstado: parametros.siglaEstado })
     .then(dados => res.status(200).send(dados))
     .catch((erro) => {
       const { statusCode } = erro
