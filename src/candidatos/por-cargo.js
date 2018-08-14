@@ -37,11 +37,11 @@ const candidatosPorCargo = ({ siglaEstado = 'SE' }) => (
     ])
       .then((resultados) => {
         const retorno = {
-          presidente: formatarRetorno(resultados[0], 'porCargo'),
-          governador: formatarRetorno(resultados[1], 'porCargo'),
-          senador: formatarRetorno(resultados[2], 'porCargo'),
-          deputadoFederal: formatarRetorno(resultados[3], 'porCargo'),
-          deputadoEstadual: formatarRetorno(resultados[4], 'porCargo'),
+          presidente: formatarRetorno(resultados[0]),
+          governador: formatarRetorno(resultados[1]),
+          senador: formatarRetorno(resultados[2]),
+          deputadoFederal: formatarRetorno(resultados[3]),
+          deputadoEstadual: formatarRetorno(resultados[4]),
         }
         resolve(retorno)
       })
