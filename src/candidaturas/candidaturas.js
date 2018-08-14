@@ -36,7 +36,7 @@ const formatarRetorno = candidaturas => (
     estado: nomeProprio(candidatura.estado_nome),
     nomeLegenda: nomeProprio(candidatura.legenda_nome),
     composicaoLegenda: candidatura.legenda_composicao,
-    resultado: nomeProprio(candidatura.resultado),
+    resultado: nomeProprio(candidatura.resultado) || 'Eleito',
   }))
 )
 
