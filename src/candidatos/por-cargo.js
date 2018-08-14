@@ -6,19 +6,19 @@ import estados from '../utils/estados'
 const sql = (idCargo, idEstado) => `
   SELECT
     id,
-    nomeUrna,
+    nome_urna,
     partido,
     numero
   FROM
-    eleicoes2014_dados_candidato
+    hot_dados_candidato
   WHERE
-    idCargo = ${idCargo} AND
-    (idEstadoCandidatura = ${idEstado} OR idEstadoCandidatura IS NULL);`
+    id_cargo = ${idCargo} AND
+    (id_estado_candidatura = ${idEstado} OR id_estado_candidatura IS NULL);`
 
 const formatarRetorno = candidatos => (
   candidatos.map(candidato => ({
     id: candidato.id,
-    nome: nomeProprio(candidato.nomeUrna),
+    nome: nomeProprio(candidato.nome_urna),
     numero: candidato.numero,
     partido: candidato.partido,
   }))
@@ -37,11 +37,11 @@ const candidatosPorCargo = ({ siglaEstado = 'SE' }) => (
     ])
       .then((resultados) => {
         const retorno = {
-          presidente: formatarRetorno(resultados[0], 'porCargo'),
-          governador: formatarRetorno(resultados[1], 'porCargo'),
-          senador: formatarRetorno(resultados[2], 'porCargo'),
-          deputadoFederal: formatarRetorno(resultados[3], 'porCargo'),
-          deputadoEstadual: formatarRetorno(resultados[4], 'porCargo'),
+          presidente: formatarRetorno(resultados[0]),
+          governador: formatarRetorno(resultados[1]),
+          senador: formatarRetorno(resultados[2]),
+          deputadoFederal: formatarRetorno(resultados[3]),
+          deputadoEstadual: formatarRetorno(resultados[4]),
         }
         resolve(retorno)
       })

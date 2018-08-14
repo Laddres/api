@@ -1,7 +1,7 @@
 import { Router as routerFactory } from 'express'
 
 import candidatos from './candidatos'
-import candidaturas from './candidaturas'
+import { candidaturas } from './candidaturas'
 
 const router = routerFactory()
 
@@ -56,7 +56,7 @@ router.get('/candidatos/:id/candidaturas', (req, res) => {
     idCandidato: req.params.id,
   }
 
-  candidaturas(parametros)
+  candidaturas({ idCandidato: parametros.idCandidato })
     .then(dados => res.status(200).send(dados))
     .catch((erro) => {
       const { statusCode } = erro
