@@ -59,7 +59,7 @@ const camara = ({ idCandidato, anoEleicao }) => (
         const retorno = {
           projetos: formatarRetornoProjetos(resultados[0]),
           totalProjetos: resultados[0].length,
-          totalProposicoes: resultados[1][0].numero_proposicoes,
+          totalProposicoes: resultados[1][0] ? resultados[1][0].numero_proposicoes : 0,
         }
         resolve(retorno)
       })
