@@ -1,4 +1,5 @@
 import capitalize from 'capitalize-pt-br'
+import moment from 'moment'
 
 // dd/mm/yyyy
 export const data = value => (
@@ -6,6 +7,13 @@ export const data = value => (
     ? value.toISOString().split('T')[0].split('-').reverse().toString().replace(/,/g, '/')
     : null
 )
+// xx anos
+export const idade = (value) => {
+  const dataNascimento = data(value)
+  return dataNascimento
+    ? `${moment().diff(moment(dataNascimento, 'DD/MM/YYYY'), 'years')} anos`
+    : null
+}
 // ddd.ddd.ddd-dd
 export const cpf = value => (
   value
