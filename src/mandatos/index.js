@@ -15,7 +15,7 @@ const mandatos = ({ idCandidato, anoEleicao, cargo }) => {
     })
   }
 
-  const funcao = cargo.toLowerCase
+  const funcao = cargo.toLowerCase()
 
   if (funcao === 'deputado federal') {
     return camara({ idCandidato, anoEleicao })
