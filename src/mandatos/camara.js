@@ -13,7 +13,7 @@ const sqlProjetos = (idCandidato, inicioMandato, fimMandato) => `
     keywords,
     url
   FROM
-    hot_camara_atuacao_propostas
+    hot_camara_atuacao_projetos
   WHERE
     id_candidato = ${idCandidato} AND
     ano BETWEEN ${inicioMandato} AND ${fimMandato}
