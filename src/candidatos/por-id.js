@@ -24,6 +24,7 @@ const formatarRetorno = candidato => ({
   id: candidato.id,
   nome: nomeProprio(candidato.nome),
   nomeUrna: nomeProprio(candidato.nome_urna),
+  foto: 'http://divulgacandcontas.tse.jus.br/candidaturas/oficial/2018/BR/PI/2022802018/180000626508/foto_1534365971368.jpg',
   dataNascimento: data(candidato.data_nascimento),
   idade: idade(candidato.data_nascimento),
   cidadeNatal: nomeProprio(candidato.cidade_natal),
