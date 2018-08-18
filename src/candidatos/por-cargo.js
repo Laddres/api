@@ -19,6 +19,7 @@ const formatarRetorno = candidatos => (
   candidatos.map(candidato => ({
     id: candidato.id,
     nome: nomeProprio(candidato.nome_urna),
+    foto: 'http://divulgacandcontas.tse.jus.br/candidaturas/oficial/2018/BR/PI/2022802018/180000626508/foto_1534365971368.jpg',
     numero: candidato.numero,
     partido: candidato.partido,
   }))
