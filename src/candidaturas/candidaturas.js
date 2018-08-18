@@ -30,7 +30,7 @@ const formatarRetorno = candidaturas => (
     cargo: nomeProprio(candidatura.cargo),
     partido: candidatura.partido,
     anoEleicao: candidatura.eleicao_ano,
-    descricaoEleicao: candidatura.eleicao_descricao,
+    descricaoEleicao: candidatura.eleicao_descricao.toUpperCase(),
     cidade: nomeProprio(candidatura.cidade),
     siglaEstado: candidatura.estado_sigla,
     estado: nomeProprio(candidatura.estado_nome),
