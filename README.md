@@ -189,7 +189,7 @@
 
 <details>
   <summary>
-    <code>/candidatos/{id}/mandatos?anoEleicao{ano da eleição vencida}&cargo={nome do cargo}</code>
+    <code>/candidatos/{id}/mandatos?anoEleicao={ano da eleição vencida}&cargo={nome do cargo}</code>
   </summary>
 
   - **Deputado Fedaral**: Retorna o número total de proposições apresentadas durante o mandato, número total de projetos (PL, PEC, PFC, PLP, PDC) e detalhes sobre estes projetos
