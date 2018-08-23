@@ -7,6 +7,7 @@ const sql = (idCargo, idEstado, termoBusca) => `
   SELECT
     id,
     nome_urna,
+    foto,
     partido,
     numero
   FROM
@@ -20,7 +21,7 @@ const formatarRetorno = candidatos => (
   candidatos.map(candidato => ({
     id: candidato.id,
     nome: nomeProprio(candidato.nome_urna),
-    foto: 'http://divulgacandcontas.tse.jus.br/candidaturas/oficial/2018/BR/PI/2022802018/180000626508/foto_1534365971368.jpg',
+    foto: candidato.foto,
     numero: candidato.numero,
     partido: candidato.partido,
   }))
