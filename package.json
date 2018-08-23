@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "API pública para consulta dos dados coletados pelo projeto Laddres",
   "main": "index.js",
   "scripts": {
