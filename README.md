@@ -16,30 +16,35 @@
   `https://api.caueira.com.br/candidatos`
 
   ```json
-  "presidente": ["..."],
-  "governador": ["..."],
-  "senador": ["..."],
-  "deputadoFederal": [
-    {
-        "id": 322184,
-        "nome": "Samarone",
-        "numero": 2311,
-        "partido": "PPS"
-    },
-    {
-        "id": 323437,
-        "nome": "Titó",
-        "numero": 1212,
-        "partido": "PDT"
-    },
-    {
-        "id": 966554,
-        "nome": "Marcos Luiz",
-        "numero": 5412,
-        "partido": "PPL"
-    },
-  ],
-  "deputadoEstadual": ["..."],
+  {
+    "presidente": ["..."],
+    "governador": ["..."],
+    "senador": ["..."],
+    "deputadoFederal": [
+      {
+          "id": 322184,
+          "nome": "Samarone",
+          "foto": "http://divulgacandcontas.tse.jus.br/candidaturas/oficial/.../foto.jpg",
+          "numero": 2311,
+          "partido": "PPS"
+      },
+      {
+          "id": 323437,
+          "nome": "Titó",
+          "foto": "http://divulgacandcontas.tse.jus.br/candidaturas/oficial/.../foto.jpg",
+          "numero": 1212,
+          "partido": "PDT"
+      },
+      {
+          "id": 966554,
+          "nome": "Marcos Luiz",
+          "foto": "http://divulgacandcontas.tse.jus.br/candidaturas/oficial/.../foto.jpg",
+          "numero": 5412,
+          "partido": "PPL"
+      },
+    ],
+    "deputadoEstadual": ["..."],
+  }
   ```
 </details>
 
@@ -53,11 +58,13 @@
   `https://api.caueira.com.br/candidatos?estado=SE`
 
   ```json
-  "presidente": ["..."],
-  "governador": ["..."],
-  "senador": ["..."],
-  "deputadoFederal": ["..."],
-  "deputadoEstadual": ["..."],
+  {
+    "presidente": ["..."],
+    "governador": ["..."],
+    "senador": ["..."],
+    "deputadoFederal": ["..."],
+    "deputadoEstadual": ["..."],
+  }
   ```
 </details>
 
@@ -75,6 +82,7 @@
     "id": 322328,
     "nome": "José Iran Barbosa Filho",
     "nomeUrna": "Iran Barbosa",
+    "foto": "http://divulgacandcontas.tse.jus.br/candidaturas/oficial/.../foto.jpg",
     "dataNascimento": "21/06/1966",
     "idade": "52 anos",
     "cidadeNatal": "Aracaju",
