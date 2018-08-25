@@ -348,3 +348,173 @@
   }
   ```
 </details>
+
+<details>
+  <summary>
+    <code>/candidatos/{id}/posicionamentos</code>
+  </summary>
+
+  Retorna a posição de (alguns) candidatos em relação a temas que estão em alta nas eleições 2018
+
+  `https://api.caueira.com.br/candidatos/322328/posicionamentos`
+
+  ```json
+  [
+    {
+      "idCandidato": 1262653,
+      "idTema": 1,
+      "titulo": "Congelamento dos Gastos em Serviços Públicos",
+      "descricao": "A proposta do atual governo é estabelecer uma regra para congelar o valor total das despesas públicas primárias federais nos próximos 20 anos, mantendo o valor real de 2016. A ideia é que os recursos mínimos de áreas como educação e saúde cresçam em função da inflação (mantendo o valor real deste ano) e não mais variem conforme a receita (como é a regra vigente). Gastos de outras áreas seriam reduzidos. Isso significa que retornando o crescimento econômico, em 2 ou 3 anos, ficará mantido o valor mínimo de gastos estabelecido em 2016, nas áreas de saúde e educação.",
+      "categoria": "Economia",
+      "projeto": {
+        "sigla": "PEC",
+        "numero": 241,
+        "ano": 2016
+      },
+      "posicao": "Contrária",
+      "fonteInformacao": "https://twitter.com/GuilhermeBoulos/status/1010489619195056128",
+      "referencias": [
+        {
+          "id": 5,
+          "titulo": "O que é e quais são os impactos da proposta do governo para congelar o gasto público - Nexo Jornal",
+          "url": "http://bit.ly/2o1QIGb"
+        },
+        {
+          "id": 6,
+          "titulo": "Entenda o que é a PEC 241 (ou 55) e como ela pode afetar sua vida",
+          "url": "http://bit.ly/2OZupwd"
+        },
+        {
+          "id": 7,
+          "titulo": "G1 - Economia - PEC 241 - Um teto para os gastos públicos",
+          "url": "http://bit.ly/2o2nAyv"
+        }
+      ]
+    },
+    {
+      "idCandidato": 1262653,
+      "idTema": 2,
+      "titulo": "Reforma Trabalhista",
+      "descricao": "As alterações mexem em pontos como férias, jornada de trabalho, remuneração e plano de carreira.",
+      "categoria": "Economia",
+      "projeto": {
+        "sigla": "PL",
+        "numero": 6787,
+        "ano": 2016
+      },
+      "posicao": "Contrária",
+      "fonteInformacao": "https://www.youtube.com/watch?v=EOMY1JOL46w",
+      "referencias": [
+          {
+            "id": 2,
+            "titulo": "Reforma trabalhista é aprovada no Senado; confira o que muda na lei",
+            "url": "http://bit.ly/2MGEeSi"
+          },
+          {
+            "id": 3,
+            "titulo": "O que muda com a entrada em vigor da reforma trabalhista - Nexo Jornal",
+            "url": "http://bit.ly/2w4yIPU"
+          },
+          {
+            "id": 4,
+            "titulo": "G1 - Economia - Reforma Trabalhista Traz Mudanças na CLT",
+            "url": "http://bit.ly/2N91XaC"
+          }
+      ]
+    },
+    {
+      "idCandidato": 1262653,
+      "idTema": 3,
+      "titulo": "Terceirização de Todas as Atividades",
+      "descricao": "Fica permitido, a partir de agora, que empresas terceirizem qualquer tipo de mão de obra, inclusive as chamadas atividades fim.",
+      "categoria": "Economia",
+      "projeto": {
+        "sigla": "PL",
+        "numero": 4302,
+        "ano": 1998
+      },
+      "posicao": "Contrária",
+      "fonteInformacao": "https://www.youtube.com/watch?v=E-cz9b9-10A",
+      "referencias": [
+        {
+          "id": 8,
+          "titulo": "Temer sanciona a terceirização. Qual o contexto da decisão - Nexo Jornal",
+          "url": "http://bit.ly/2OWtJI6"
+        },
+        {
+          "id": 9,
+          "titulo": "G1 - Entenda o projeto de lei da terceirização aprovado na Câmara - notícias em Concursos e Emprego",
+          "url": "https://glo.bo/2LltOCL"
+        },
+        {
+          "id": 10,
+          "titulo": "Temer sanciona lei de terceirização com pouca proteção a trabalhador - 31/03/2017 - Mercado - Folha de S.Paulo",
+          "url": "http://bit.ly/2Mqik6x"
+        }
+      ]
+    },
+    {
+      "idCandidato": 1262653,
+      "idTema": 4,
+      "titulo": "Reforma da Previdência",
+      "descricao": "Projeto acaba com aposentadoria por idade e iguala homens, mulheres e maior parte das categorias profissionais. Pela nova proposta, a idade mínima para se aposentar será de 65 anos, com pelo menos 25 anos de contribuição. A regra passa a ser a mesma para homens e mulheres, sejam empregados da iniciativa privada, professores, servidores públicos ou trabalhadores rurais. Os militares ficaram de fora.",
+      "categoria": "Economia",
+      "projeto": {
+        "sigla": null,
+        "numero": null,
+        "ano": null
+      },
+      "posicao": "Contrária",
+      "fonteInformacao": "https://www.youtube.com/watch?v=NZGlIxzWqAs",
+      "referencias": [
+        {
+          "id": 11,
+          "titulo": "Veja um resumo com as principais propostas da reforma da Previdência | Gazeta do Povo",
+          "url": "http://bit.ly/2P0WZx9"
+        },
+        {
+          "id": 12,
+          "titulo": "O que muda na aposentadoria? | UOL Economia",
+          "url": "http://bit.ly/2Mqnwr3"
+        },
+        {
+          "id": 13,
+          "titulo": "O que há na ‘nova reforma da Previdência’ de Temer - Nexo Jornal",
+          "url": "http://bit.ly/2o54UhK"
+        }
+      ]
+    },
+    {
+      "idCandidato": 1262653,
+      "idTema": 5,
+      "titulo": "Taxação de Grandes Fortunas",
+      "descricao": "Cobrança de impostos sobre grandes fortunas, heranças e doações com o objetivo de aumentar a arrecadação tributária e suprir o déficit que o país vem enfrentando.",
+      "categoria": "Economia",
+      "projeto": {
+        "sigla": null,
+        "numero": null,
+        "ano": null
+      },
+      "posicao": "Favorável",
+      "fonteInformacao": "http://www.mtst.org/noticias/guilherme-boulos-propoe-taxar-ricos-para-ampliar-investimento-publico/",
+      "referencias": [
+        {
+          "id": 14,
+          "titulo": "O imposto sobre grandes fortunas e as eleições de 2018",
+          "url": "http://bit.ly/2o3fdml"
+        },
+        {
+          "id": 15,
+          "titulo": "Cobrar imposto de grandes fortunas dá resultado? Veja casos pelo mundo - Notícias - UOL Economia",
+          "url": "http://bit.ly/2Lp8aO2"
+        },
+        {
+          "id": 16,
+          "titulo": "Reforma do imposto sobre fortuna na França reacende debate sobre taxação dos mais ricos - BBC News Brasil",
+          "url": "https://bbc.in/2MwvqiA"
+        }
+      ]
+    }
+  ]
+  ```
+</details>
