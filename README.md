@@ -518,3 +518,35 @@
   ]
   ```
 </details>
+
+<details>
+  <summary>
+    <code>/candidatos/{id}/resumo</code>
+  </summary>
+
+  Retorna o resumo da vida pública de um determinado candidato.
+
+  - numeroPartidos = Total de partidos que o candidato se filiou a partir de 2003;
+  - numeroCandidaturas = Total de processos eleitorais, a partir do ano de 2003, que o candidato participou;
+  - numeroMandatos = Total de mandatos que o candidato exerceu após 2003;
+  - numeroProposicoes e numeroProposicoes = Resumo da atividade parlamentar do candidato, caso ele(a) tenha exercido algum papel na câmara ~ou no senado~ a partir de 2003.
+
+  `https://api.caueira.com.br/candidatos/304/resumo`
+
+  ```json
+  {
+    "idCandidato": 304,
+    "numeroPartidos": 3,
+    "partidoAtual": "PSDB",
+    "partidosAnteriores": [
+      "PV",
+      "PT"
+    ],
+    "numeroProcessosJudiciais": null,
+    "numeroCandidaturas": 7,
+    "numeroMandatos": 1,
+    "numeroProposicoes": 291,
+    "numeroProjetos": 38
+  }
+  ```
+</details>
