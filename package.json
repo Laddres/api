@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/Laddres/api#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "capitalize-pt-br": "^0.1.2",
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",

@@ -5,6 +5,7 @@ import { candidaturas } from './candidaturas'
 import mandatos from './mandatos'
 import posicionamento from './posicionamento'
 import resumo from './resumo'
+import { registrarDispositivo } from './usuario'
 
 const router = routerFactory()
 
@@ -12,6 +13,18 @@ router.get('/', (req, res) => {
   res.status(200).send({
     success: { message: 'Bem-vindo ao Laddres' },
   })
+})
+
+router.post('/usuario', (req, res) => {
+  const { uniqueId } = req.body
+  const userAgent = req.headers['user-agent']
+
+  registrarDispositivo({ uniqueId, userAgent })
+    .then(() => res.status(200).send())
+    .catch((erro) => {
+      const { statusCode } = erro
+      res.status(statusCode).send(erro)
+    })
 })
 
 router.get('/candidatos', (req, res) => {
