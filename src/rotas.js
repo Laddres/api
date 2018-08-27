@@ -2,6 +2,7 @@ import { Router as routerFactory } from 'express'
 
 import candidatos from './candidatos'
 import { candidaturas } from './candidaturas'
+import { like, dislike } from './like'
 import mandatos from './mandatos'
 import posicionamento from './posicionamento'
 import resumo from './resumo'
@@ -20,6 +21,27 @@ router.post('/usuario', (req, res) => {
   const userAgent = req.headers['user-agent']
 
   registrarDispositivo({ uniqueId, userAgent })
+    .then(() => res.status(200).send())
+    .catch((erro) => {
+      const { statusCode } = erro
+      res.status(statusCode).send(erro)
+    })
+})
+
+router.post('/like', (req, res) => {
+  const { idCandidato, idDispositivo } = req.body
+
+  like({ idCandidato, idDispositivo })
+    .then(() => res.status(200).send())
+    .catch((erro) => {
+      const { statusCode } = erro
+      res.status(statusCode).send(erro)
+    })
+})
+router.post('/dislike', (req, res) => {
+  const { idCandidato, idDispositivo } = req.body
+
+  dislike({ idCandidato, idDispositivo })
     .then(() => res.status(200).send())
     .catch((erro) => {
       const { statusCode } = erro
