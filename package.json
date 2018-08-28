@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "API pública para consulta dos dados coletados pelo projeto Laddres",
   "main": "index.js",
   "scripts": {
@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/Laddres/api#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "capitalize-pt-br": "^0.1.2",
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
