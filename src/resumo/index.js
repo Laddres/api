@@ -9,7 +9,8 @@ const sql = idCandidato => `
     numero_candidaturas,
     numero_mandatos,
     numero_proposicoes,
-    numero_projetos
+    numero_projetos,
+    numero_processos
   FROM
     hot_resumo_candidato
   WHERE
@@ -24,7 +25,7 @@ const formatarRetorno = (info) => {
     numeroPartidos: info.numero_partidos,
     partidoAtual: atual,
     partidosAnteriores: [...anteriores].reverse(),
-    numeroProcessosJudiciais: null,
+    numeroProcessosJudiciais: info.numero_processos,
     numeroCandidaturas: info.numero_candidaturas,
     numeroMandatos: info.numero_mandatos,
     numeroProposicoes: info.numero_proposicoes,

@@ -530,6 +530,9 @@
   - numeroCandidaturas = Total de processos eleitorais, a partir do ano de 2003, que o candidato participou;
   - numeroMandatos = Total de mandatos que o candidato exerceu após 2003;
   - numeroProposicoes e numeroProposicoes = Resumo da atividade parlamentar do candidato, caso ele(a) tenha exercido algum papel na câmara ~ou no senado~ a partir de 2003.
+  - numeroProcessosJudiciais = Total de processos judiciais aos quais o candidato responde.
+
+  Resultados iguais a `null` representam a falta de dados a respeito do candidato.
 
   `https://api.caueira.com.br/candidatos/304/resumo`
 
@@ -542,7 +545,7 @@
       "PV",
       "PT"
     ],
-    "numeroProcessosJudiciais": null,
+    "numeroProcessosJudiciais": 0,
     "numeroCandidaturas": 7,
     "numeroMandatos": 1,
     "numeroProposicoes": 291,
