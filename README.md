@@ -553,3 +553,42 @@
   }
   ```
 </details>
+
+<details>
+  <summary>
+    <code>/candidatos/{id}/processos</code>
+  </summary>
+
+  Retorna a lista de processos judiciais aos quais um determinado responde.
+
+  Resultados iguais a `null` representam a falta de dados a respeito do candidato.
+
+  `https://api.caueira.com.br/candidatos/412032/processos`
+
+  ```json
+  {
+    "processado": true,
+    "numeroProcessos": 2,
+    "processos": [
+      {
+        "idProcesso": 7708,
+        "numero": "0001246-28.2015.8.25.0036",
+        "tipo": "Ação civil pública",
+        "tribunal": "TJ",
+        "descricao": "É réu em Ação, movida pelo Ministério Público do estado de Sergipe, que investiga possíveis irregularidades em atos administrativos.",
+        "link": "http://www.tjse.jus.br/portal/consultas/consulta-processual"
+      },
+      {
+        "idProcesso": 7709,
+        "numero": "0000694-10.2017.8.25.0031",
+        "tipo": "Ação civil de improbidade administrativa",
+        "tribunal": "TJ",
+        "descricao": "É alvo de Ação Civil de Improbidade Administrativa de autoria da promotoria do Ministério Público de Gararu (SE).",
+        "link": "http://www.tjse.jus.br/portal/consultas/consulta-processual"
+      }
+    ]
+  }
+  ```
+
+  _Obs.: Estes dados foram gentilmente cedidos pelo pessoal do [VigieAqui](http://www.vigieaqui.com.br/detectordefichadepolitico). Para ter acesso à API completa, produzida por eles, entre em contato via contato@vigieaqui.com.br ._
+</details>

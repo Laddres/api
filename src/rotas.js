@@ -1,5 +1,7 @@
 import { Router as routerFactory } from 'express'
 
+import { verificarToken } from './middlewares'
+
 import candidatos from './candidatos'
 import { candidaturas } from './candidaturas'
 import { like, dislike } from './like'
@@ -22,15 +24,20 @@ router.post('/usuario', (req, res) => {
   const userAgent = req.headers['user-agent']
 
   registrarDispositivo({ uniqueId, userAgent })
-    .then(() => res.status(200).send())
+    .then(accessToken => res.status(200).send({ auth: true, accessToken }))
     .catch((erro) => {
       const { statusCode } = erro
       res.status(statusCode).send(erro)
     })
 })
+router.get('/usuario', verificarToken, (req, res) => {
+  const { idDispositivo } = req
+  res.status(200).send({ idDispositivo })
+})
 
-router.post('/like', (req, res) => {
-  const { idCandidato, idDispositivo } = req.body
+router.post('/like', verificarToken, (req, res) => {
+  const { idCandidato } = req.body
+  const { idDispositivo } = req
 
   like({ idCandidato, idDispositivo })
     .then(() => res.status(200).send())
@@ -39,8 +46,9 @@ router.post('/like', (req, res) => {
       res.status(statusCode).send(erro)
     })
 })
-router.post('/dislike', (req, res) => {
-  const { idCandidato, idDispositivo } = req.body
+router.post('/dislike', verificarToken, (req, res) => {
+  const { idCandidato } = req.body
+  const { idDispositivo } = req
 
   dislike({ idCandidato, idDispositivo })
     .then(() => res.status(200).send())
@@ -131,7 +139,7 @@ router.get('/candidatos/:id/posicionamentos', (req, res) => {
     })
 })
 
-router.get('/candidatos/:id/processos', (req, res) => {
+router.get('/candidatos/:id/processos', verificarToken, (req, res) => {
   const parametros = {
     idCandidato: req.params.id,
   }
