@@ -1,4 +1,6 @@
 /* eslint-disable prefer-promise-reject-errors */
+import jwt from 'jsonwebtoken'
+
 import db from '../utils/database'
 
 const sqlConsulta = uniqueId => `
@@ -31,14 +33,20 @@ const registrarDispositivo = ({ uniqueId, userAgent }) => (
       })
     }
 
+    const token = jwt.sign(
+      { id: uniqueId },
+      process.env.JWT_SECRET,
+      { expiresIn: 5184000 },
+    )
+
     db.query(sqlConsulta(uniqueId))
       .then((resultados) => {
         if (resultados.length > 0) {
-          resolve()
+          resolve(token)
         }
 
         db.query(sqlCadastro(uniqueId, userAgent))
-          .then(() => resolve())
+          .then(() => resolve(token))
           .catch((error) => {
             reject({ statusCode: 500, erro: `Erro inesperado: ${error}` })
           })
