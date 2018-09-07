@@ -14,7 +14,9 @@ const sql = (idCargo, idEstado) => `
     hot_dados_candidato
   WHERE
     id_cargo = ${idCargo} AND
-    (id_estado_candidatura = ${idEstado} OR id_estado_candidatura IS NULL);`
+    (id_estado_candidatura = ${idEstado} OR id_estado_candidatura IS NULL)
+  ORDER BY
+    RAND();`
 
 const formatarRetorno = candidatos => (
   candidatos.map(candidato => ({
