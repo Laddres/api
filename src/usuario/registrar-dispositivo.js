@@ -17,9 +17,9 @@ const sqlCadastro = (uniqueId, userAgent) => `
   VALUES
     ("${uniqueId}", "${userAgent}");`
 
-const registrarDispositivo = ({ uniqueId, userAgent }) => (
+const registrarDispositivo = ({ uniqueId, secret, userAgent }) => (
   new Promise((resolve, reject) => {
-    if (!uniqueId) {
+    if (!uniqueId || !secret || secret !== process.env.APP_SECRET) {
       reject({
         statusCode: 400,
         erro: 'Verifique se os parâmetros de sua requisição estão de acordo com a documentação do projeto',
