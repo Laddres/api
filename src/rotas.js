@@ -20,10 +20,10 @@ router.get('/', (req, res) => {
 })
 
 router.post('/usuario', (req, res) => {
-  const { uniqueId } = req.body
+  const { uniqueId, secret } = req.body
   const userAgent = req.headers['user-agent']
 
-  registrarDispositivo({ uniqueId, userAgent })
+  registrarDispositivo({ uniqueId, secret, userAgent })
     .then(accessToken => res.status(200).send({ auth: true, accessToken }))
     .catch((erro) => {
       const { statusCode } = erro
