@@ -117,7 +117,7 @@ router.get('/candidatos/:id/likes', verificarToken, (req, res) => {
     idDispositivo: req.idDispositivo,
   }
 
-  likesCandidato({ idCandidato: parametros.idCandidato })
+  likesCandidato({ idCandidato: parametros.idCandidato, idDispositivo: parametros.idDispositivo })
     .then(dados => res.status(200).send(dados))
     .catch((erro) => {
       const { statusCode } = erro
