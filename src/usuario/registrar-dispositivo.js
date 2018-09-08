@@ -26,13 +26,6 @@ const registrarDispositivo = ({ uniqueId, secret, userAgent }) => (
       })
     }
 
-    if (!userAgent.match(/(android|iphone|mobile)/i)) {
-      reject({
-        statusCode: 403,
-        erro: 'Tipo de dispositivo inválido',
-      })
-    }
-
     const token = jwt.sign(
       { id: uniqueId },
       process.env.JWT_SECRET,
