@@ -1,16 +1,18 @@
 /* eslint-disable prefer-promise-reject-errors */
 import db from '../utils/database'
 
-const sql = idCandidato => `
+const sql = (idCandidato, idUsuario) => `
   SELECT
-    COUNT(candidato_id) as likes
+    COUNT(candidato_id) as likes,
+    COUNT(IF(usuario_id = '${idUsuario}', 1, NULL)) as curtidasUsuario
   FROM
     \`like\`
   WHERE
     candidato_id = ${idCandidato};`
 
 const formatarRetorno = candidato => ({
-  likes: candidato.likes,
+  curtidas: candidato.likes,
+  usuarioCurtiu: candidato.curtidasUsuario !== 0,
 })
 
 const likes = ({ idCandidato }) => (

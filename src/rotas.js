@@ -111,9 +111,10 @@ router.get('/candidatos/:id/candidaturas', (req, res) => {
     })
 })
 
-router.get('/candidatos/:id/likes', (req, res) => {
+router.get('/candidatos/:id/likes', verificarToken, (req, res) => {
   const parametros = {
     idCandidato: req.params.id,
+    idDispositivo: req.idDispositivo,
   }
 
   likesCandidato({ idCandidato: parametros.idCandidato })
