@@ -4,7 +4,7 @@ import { verificarToken } from './middlewares'
 
 import candidatos from './candidatos'
 import { candidaturas } from './candidaturas'
-import { like, dislike } from './like'
+import { like, likesCandidato, dislike } from './like'
 import mandatos from './mandatos'
 import posicionamento from './posicionamento'
 import processos from './processos'
@@ -104,6 +104,19 @@ router.get('/candidatos/:id/candidaturas', (req, res) => {
   }
 
   candidaturas({ idCandidato: parametros.idCandidato })
+    .then(dados => res.status(200).send(dados))
+    .catch((erro) => {
+      const { statusCode } = erro
+      res.status(statusCode).send(erro)
+    })
+})
+
+router.get('/candidatos/:id/likes', (req, res) => {
+  const parametros = {
+    idCandidato: req.params.id,
+  }
+
+  likesCandidato({ idCandidato: parametros.idCandidato })
     .then(dados => res.status(200).send(dados))
     .catch((erro) => {
       const { statusCode } = erro
