@@ -1,10 +1,10 @@
 /* eslint-disable prefer-promise-reject-errors */
 import db from '../utils/database'
 
-const sql = (idCandidato, idUsuario) => `
+const sql = (idCandidato, idDispositivo) => `
   SELECT
     COUNT(candidato_id) as likes,
-    COUNT(IF(usuario_id = '${idUsuario}', 1, NULL)) as curtidasUsuario
+    COUNT(IF(usuario_id = '${idDispositivo}', 1, NULL)) as curtidasUsuario
   FROM
     \`like\`
   WHERE
@@ -15,9 +15,9 @@ const formatarRetorno = candidato => ({
   usuarioCurtiu: candidato.curtidasUsuario !== 0,
 })
 
-const likes = ({ idCandidato }) => (
+const likes = ({ idCandidato, idDispositivo }) => (
   new Promise((resolve, reject) => {
-    db.query(sql(idCandidato))
+    db.query(sql(idCandidato, idDispositivo))
       .then((resultados) => {
         if (resultados.length === 0) {
           reject({ statusCode: 404, erro: 'Este candidato não existe' })
