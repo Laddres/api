@@ -8,6 +8,7 @@ const sql = idCandidato => `
     partidos_anteriores,
     numero_candidaturas,
     numero_mandatos,
+    numero_resultados_nulos,
     numero_proposicoes,
     numero_projetos,
     numero_processos
@@ -28,6 +29,7 @@ const formatarRetorno = (info) => {
     numeroProcessosJudiciais: info.numero_processos,
     numeroCandidaturas: info.numero_candidaturas,
     numeroMandatos: info.numero_mandatos,
+    numeroMandatosPreciso: info.numero_resultados_nulos === 0,
     numeroProposicoes: info.numero_proposicoes,
     numeroProjetos: info.numero_projetos,
   }
