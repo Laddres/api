@@ -27,7 +27,7 @@ const formatarRetorno = candidato => ({
   id: candidato.id,
   nome: nomeProprio(candidato.nome),
   nomeUrna: nomeProprio(candidato.nome_urna),
-  foto: `https://images.caueira.com.br/laddres_${candidato.id}.jpg`,
+  foto: candidato.foto,
   dataNascimento: data(candidato.data_nascimento),
   idade: idade(candidato.data_nascimento),
   cidadeNatal: nomeProprio(candidato.cidade_natal),

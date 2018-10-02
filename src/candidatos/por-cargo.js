@@ -29,7 +29,7 @@ const formatarRetorno = candidatos => (
   candidatos.map(candidato => ({
     id: candidato.id,
     nome: nomeProprio(candidato.nome_urna),
-    foto: `https://images.caueira.com.br/laddres_${candidato.id}.jpg`,
+    foto: candidato.foto,
     numero: candidato.numero,
     partido: candidato.partido,
   }))
