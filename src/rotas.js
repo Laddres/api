@@ -79,7 +79,7 @@ router.get('/candidatos/:id', (req, res) => {
     idCandidato: req.params.id,
   }
 
-  candidatos.porId(parametros)
+  candidatos(parametros)
     .then(dados => res.status(200).send(dados))
     .catch((erro) => {
       const { statusCode } = erro
