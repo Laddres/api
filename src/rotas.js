@@ -61,23 +61,12 @@ router.post('/dislike', verificarToken, (req, res) => {
 router.get('/candidatos', (req, res) => {
   const parametros = {
     nomeCandidato: req.query.nome,
-    tipo: req.query.tipo,
-    pagina: req.query.pagina,
-    itens: req.query.itens,
     siglaEstado: req.query.estado,
+    genero: req.query.genero,
+    corRaca: req.query.corRaca,
   }
 
-  if (!parametros.nomeCandidato) {
-    candidatos.porCargo({ siglaEstado: parametros.siglaEstado })
-      .then(dados => res.status(200).send(dados))
-      .catch((erro) => {
-        const { statusCode } = erro
-        res.status(statusCode).send(erro)
-      })
-    return
-  }
-
-  candidatos.busca({ nomeCandidato: parametros.nomeCandidato, siglaEstado: parametros.siglaEstado })
+  candidatos(parametros)
     .then(dados => res.status(200).send(dados))
     .catch((erro) => {
       const { statusCode } = erro
@@ -90,7 +79,7 @@ router.get('/candidatos/:id', (req, res) => {
     idCandidato: req.params.id,
   }
 
-  candidatos.porId(parametros)
+  candidatos(parametros)
     .then(dados => res.status(200).send(dados))
     .catch((erro) => {
       const { statusCode } = erro

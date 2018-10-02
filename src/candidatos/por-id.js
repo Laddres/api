@@ -15,7 +15,9 @@ const sql = idCandidato => `
     numero,
     cargo,
     grau_instrucao,
-    ocupacao
+    ocupacao,
+    genero,
+    cor_raca
   FROM
     hot_dados_candidato
   WHERE
@@ -25,7 +27,7 @@ const formatarRetorno = candidato => ({
   id: candidato.id,
   nome: nomeProprio(candidato.nome),
   nomeUrna: nomeProprio(candidato.nome_urna),
-  foto: `https://images.caueira.com.br/laddres_${candidato.id}.jpg`,
+  foto: candidato.foto,
   dataNascimento: data(candidato.data_nascimento),
   idade: idade(candidato.data_nascimento),
   cidadeNatal: nomeProprio(candidato.cidade_natal),
@@ -35,6 +37,8 @@ const formatarRetorno = candidato => ({
   cargo: nomeProprio(candidato.cargo),
   grauInstrucao: nomeProprio(candidato.grau_instrucao),
   ocupacao: nomeProprio(candidato.ocupacao),
+  genero: nomeProprio(candidato.genero),
+  corRaca: nomeProprio(candidato.cor_raca),
 })
 
 const candidatosPorId = ({ idCandidato }) => (

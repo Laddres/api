@@ -50,10 +50,14 @@
 
 <details>
   <summary>
-    <code>/candidatos?estado={sigla do estado}</code>
+    <code>/candidatos?estado={sigla do estado}&genero={genero do candidato}&corRaca={cor/raça do candidato}</code>
   </summary>
 
-  Retorna todos os candidatos divididos por cargo do estado indicado. Caso nenhum estado seja indicado, o padrão será 'SE'
+  Retorna todos os candidatos divididos por cargo com os filtros indicados.
+
+  - Caso nenhum estado seja indicado, o padrão será 'SE'
+  - Gêneros, como consta no TSE, podem ser 'masculino' ou 'feminino'
+  - Cor/Raça, como consta no TSE, pode ser 'branca', 'preta', 'parda', 'amarela' ou 'indígena'
 
   `https://api.caueira.com.br/candidatos?estado=SE`
 
