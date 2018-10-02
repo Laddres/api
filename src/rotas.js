@@ -67,17 +67,7 @@ router.get('/candidatos', (req, res) => {
     siglaEstado: req.query.estado,
   }
 
-  if (!parametros.nomeCandidato) {
-    candidatos.porCargo({ siglaEstado: parametros.siglaEstado })
-      .then(dados => res.status(200).send(dados))
-      .catch((erro) => {
-        const { statusCode } = erro
-        res.status(statusCode).send(erro)
-      })
-    return
-  }
-
-  candidatos.busca({ nomeCandidato: parametros.nomeCandidato, siglaEstado: parametros.siglaEstado })
+  candidatos(parametros)
     .then(dados => res.status(200).send(dados))
     .catch((erro) => {
       const { statusCode } = erro
