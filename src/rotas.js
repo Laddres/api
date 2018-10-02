@@ -61,10 +61,9 @@ router.post('/dislike', verificarToken, (req, res) => {
 router.get('/candidatos', (req, res) => {
   const parametros = {
     nomeCandidato: req.query.nome,
-    tipo: req.query.tipo,
-    pagina: req.query.pagina,
-    itens: req.query.itens,
     siglaEstado: req.query.estado,
+    genero: req.query.genero,
+    corRaca: req.query.corRaca,
   }
 
   candidatos(parametros)

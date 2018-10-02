@@ -1,13 +1,22 @@
 import busca from './busca'
 import porCargo from './por-cargo'
-// import porId from './por-id'
-// import porNome from './por-nome'
 
-const candidato = ({ nomeCandidato, siglaEstado }) => {
+const candidato = ({
+  nomeCandidato,
+  siglaEstado,
+  genero,
+  corRaca,
+}) => {
   if (!nomeCandidato) {
-    return porCargo({ siglaEstado })
+    return porCargo({ siglaEstado, genero, corRaca })
   }
-  return busca({ nomeCandidato, siglaEstado })
+
+  return busca({
+    nomeCandidato,
+    siglaEstado,
+    genero,
+    corRaca,
+  })
 }
 
 export default candidato
