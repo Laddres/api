@@ -74,6 +74,23 @@ router.get('/candidatos', (req, res) => {
     })
 })
 
+router.get('/candidatos/favoritos', verificarToken, (req, res) => {
+  const parametros = {
+    nomeCandidato: req.query.nome,
+    siglaEstado: req.query.estado,
+    genero: req.query.genero,
+    corRaca: req.query.corRaca,
+    idDispositivo: req.idDispositivo,
+  }
+
+  candidatos(parametros)
+    .then(dados => res.status(200).send(dados))
+    .catch((erro) => {
+      const { statusCode } = erro
+      res.status(statusCode).send(erro)
+    })
+})
+
 router.get('/candidatos/:id', (req, res) => {
   const parametros = {
     idCandidato: req.params.id,
