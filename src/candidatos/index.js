@@ -8,13 +8,19 @@ const candidato = ({
   siglaEstado,
   genero,
   corRaca,
+  idDispositivo,
 }) => {
   if (idCandidato) {
     return porId({ idCandidato })
   }
 
   if (!nomeCandidato) {
-    return porCargo({ siglaEstado, genero, corRaca })
+    return porCargo({
+      siglaEstado,
+      genero,
+      corRaca,
+      idDispositivo,
+    })
   }
 
   return busca({
@@ -22,6 +28,7 @@ const candidato = ({
     siglaEstado,
     genero,
     corRaca,
+    idDispositivo,
   })
 }
 
