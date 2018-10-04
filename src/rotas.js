@@ -64,6 +64,7 @@ router.get('/candidatos', (req, res) => {
     siglaEstado: req.query.estado,
     genero: req.query.genero,
     corRaca: req.query.corRaca,
+    primeiraCandidatura: req.query.primeiraCandidatura,
   }
 
   candidatos(parametros)
@@ -80,6 +81,7 @@ router.get('/candidatos/favoritos', verificarToken, (req, res) => {
     siglaEstado: req.query.estado,
     genero: req.query.genero,
     corRaca: req.query.corRaca,
+    primeiraCandidatura: req.query.primeiraCandidatura,
     idDispositivo: req.idDispositivo,
   }
 
