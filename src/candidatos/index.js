@@ -8,6 +8,7 @@ const candidato = ({
   siglaEstado,
   genero,
   corRaca,
+  primeiraCandidatura,
   idDispositivo,
 }) => {
   if (idCandidato) {
@@ -19,6 +20,7 @@ const candidato = ({
       siglaEstado,
       genero,
       corRaca,
+      primeiraCandidatura,
       idDispositivo,
     })
   }
@@ -28,6 +30,7 @@ const candidato = ({
     siglaEstado,
     genero,
     corRaca,
+    primeiraCandidatura,
     idDispositivo,
   })
 }
