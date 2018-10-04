@@ -66,11 +66,51 @@ const candidatosBusca = ({
     const estado = estados[siglaEstado.toUpperCase()]
 
     Promise.all([
-      db.query(sql(1, estado.id, nomeCandidato, genero, corRaca, primeiraCandidatura, idDispositivo)),
-      db.query(sql(3, estado.id, nomeCandidato, genero, corRaca, primeiraCandidatura, idDispositivo)),
-      db.query(sql(5, estado.id, nomeCandidato, genero, corRaca, primeiraCandidatura, idDispositivo)),
-      db.query(sql(6, estado.id, nomeCandidato, genero, corRaca, primeiraCandidatura, idDispositivo)),
-      db.query(sql(7, estado.id, nomeCandidato, genero, corRaca, primeiraCandidatura, idDispositivo)),
+      db.query(sql(
+        1,
+        estado.id,
+        nomeCandidato,
+        genero,
+        corRaca,
+        primeiraCandidatura,
+        idDispositivo,
+      )),
+      db.query(sql(
+        3,
+        estado.id,
+        nomeCandidato,
+        genero,
+        corRaca,
+        primeiraCandidatura,
+        idDispositivo,
+      )),
+      db.query(sql(
+        5,
+        estado.id,
+        nomeCandidato,
+        genero,
+        corRaca,
+        primeiraCandidatura,
+        idDispositivo,
+      )),
+      db.query(sql(
+        6,
+        estado.id,
+        nomeCandidato,
+        genero,
+        corRaca,
+        primeiraCandidatura,
+        idDispositivo,
+      )),
+      db.query(sql(
+        7,
+        estado.id,
+        nomeCandidato,
+        genero,
+        corRaca,
+        primeiraCandidatura,
+        idDispositivo,
+      )),
     ])
       .then((resultados) => {
         const retorno = {
