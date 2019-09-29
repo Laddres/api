@@ -86,6 +86,7 @@
     "id": 322328,
     "nome": "José Iran Barbosa Filho",
     "nomeUrna": "Iran Barbosa",
+    "cpf": "33618100515",
     "foto": "http://divulgacandcontas.tse.jus.br/candidaturas/oficial/.../foto.jpg",
     "dataNascimento": "21/06/1966",
     "idade": "52 anos",
